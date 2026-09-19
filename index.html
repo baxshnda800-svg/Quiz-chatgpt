@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ku" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kurd Quiz Builder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">🧠</div>
+      <div><b>Kurd Quiz</b><small>دروستکەری تاقیکردنەوە</small></div>
+    </div>
+    <div class="top-actions">
+      <button class="ghost" id="clearBtn">پاککردنەوە</button>
+      <button class="primary" id="previewBtn">پیشاندانی تاقیکردنەوە</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="badge">Quiz Builder</span>
+        <h1>تاقیکردنەوەکەت بە خێرایی دروست بکە</h1>
+        <p>زمانی پرسیارەکان هەڵبژێرە؛ زمان و ڕووکاری ئەم وێبەکە هەر بە کوردی دەمێنێتەوە.</p>
+      </div>
+      <div class="hero-icon">✦</div>
+    </section>
+
+    <section class="card">
+      <h2>١. زانیاری تاقیکردنەوە</h2>
+      <div class="grid two">
+        <label>ناوی تاقیکردنەوە
+          <input id="quizTitle" value="تاقیکردنەوەی نوێ" placeholder="ناوی تاقیکردنەوە">
+        </label>
+        <label>ژمارەی پرسیار
+          <div class="number-row">
+            <button class="step" data-step="-1">−</button>
+            <input id="questionCount" type="number" min="1" max="30" value="5">
+            <button class="step" data-step="1">+</button>
+          </div>
+        </label>
+      </div>
+
+      <h2>٢. زمانی پرسیارەکان</h2>
+      <div class="language-grid" id="languageGrid">
+        <button class="lang active" data-lang="ku">کوردی <span>کوردی</span></button>
+        <button class="lang" data-lang="en">English <span>English</span></button>
+        <button class="lang" data-lang="ar">العربية <span>عەرەبی</span></button>
+        <button class="lang" data-lang="tr">Türkçe <span>تورکی</span></button>
+      </div>
+      <p class="hint">تێبینی: ئەمە تەنها زمانی ناوەڕۆکی پرسیارەکان دەگۆڕێت؛ دوگمە و مێنو و ناونیشانی وێبەکە ناگۆڕێت.</p>
+
+      <h2>٣. جۆری پرسیار</h2>
+      <div class="type-grid">
+        <button class="type active" data-type="mcq"><b>🔘</b><span>چوار هەڵبژاردە</span><small>A / B / C / D</small></button>
+        <button class="type" data-type="tf"><b>✓</b><span>ڕاست / هەڵە</span><small>True / False</small></button>
+      </div>
+
+      <h2>٤. وێنەی تاقیکردنەوە</h2>
+      <label class="upload" id="uploadBox">
+        <input id="imageInput" type="file" accept="image/*">
+        <div class="upload-icon">↥</div>
+        <b>وێنە دابنێ یان هەڵیبژێرە</b>
+        <small>PNG, JPG, WEBP</small>
+      </label>
+      <img id="previewImage" class="preview-image" alt="پیشاندانی وێنە" hidden>
+
+      <div class="divider"></div>
+      <button class="primary wide" id="generateBtn">✨ دروستکردنی تاقیکردنەوە</button>
+    </section>
+
+    <section class="card" id="questionsSection">
+      <div class="section-head">
+        <div>
+          <h2>پرسیارەکان</h2>
+          <p class="muted">پرسیارەکان لێرە دەبینیت و دەتوانیت دەستیانکاری بکەیت.</p>
+        </div>
+        <button class="secondary" id="addQuestionBtn">+ زیادکردنی پرسیار</button>
+      </div>
+      <div id="questions"></div>
+    </section>
+  </main>
+
+  <div class="modal" id="quizModal" hidden>
+    <div class="modal-card">
+      <div class="modal-head">
+        <div><span class="badge">Preview</span><h2 id="modalTitle">تاقیکردنەوە</h2></div>
+        <button class="close" id="closeModal">×</button>
+      </div>
+      <div id="quizPreview"></div>
+      <div class="result" id="result" hidden></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
